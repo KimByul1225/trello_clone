@@ -9,6 +9,9 @@ interface FormData {
     title: string;
 }
 
+/**
+ * @description 보드 추가를 확인하는 Modal창.
+ */
 const BoardModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });
     const [boardModal, setBoardModal] = useRecoilState<boolean>(boardModalState);

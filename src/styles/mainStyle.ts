@@ -49,3 +49,18 @@ export const AddBoardButton = styled.button`
     }
 
 `;
+
+export const Boards = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 20px;
+`;
+
+export const Garbage = styled.div`
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 150px;
+    height: 150px;
+`;
