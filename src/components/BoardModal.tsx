@@ -10,7 +10,7 @@ interface FormData {
 }
 
 /**
- * @description 보드 추가를 확인하는 Modal창.
+ * @description 보드를 추가하기 위한 Modal창.
  */
 const BoardModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });

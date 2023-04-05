@@ -9,6 +9,10 @@ interface FormData {
     title: string;
 }
 
+/**
+ * @description 보드 타이틀 수정 하는 모달창.
+ */
+
 const BoardTitleModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });
     const [boardTitle, setBoardTitle] = useRecoilState<string>(boardTitleState);
