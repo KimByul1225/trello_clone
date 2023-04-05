@@ -1,18 +1,18 @@
 import { Boards } from "../styles/mainStyle";
-
 import DroppableBoard from "./DroppableBoard";
 import { useRecoilState } from "recoil";
 import { todosState } from "../atom";
 import { DragDropContext, DragStart, DropResult, ResponderProvided } from "react-beautiful-dnd";
 import { saveTodoToLocalStorage } from "../utils/todo";
-// import DroppableGarbage from "./DroppableGarbage";
-
 import { ITodosState } from "../types/common";
 import { useCallback } from "react";
 
+/**
+ * @description 보드가 그려지기 위한 Container
+ */
+
 const DragDropContainer = () => {
     const [todos, setTodos] = useRecoilState<ITodosState>(todosState);
-
     const onDragStart = useCallback((initial: DragStart, provided: ResponderProvided) => {}, []);
 
     const onDragEnd = useCallback(

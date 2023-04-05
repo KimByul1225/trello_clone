@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { boardTitleModalState, boardTitleState, todosState } from "../atom";
 import { ITodo } from "../types/common";
 import { saveTodoToLocalStorage } from "../utils/todo";
+import DraggableCard from "./DraggableCard";
 
 interface DroppableBoardProps {
     boardId: string;
@@ -15,6 +16,10 @@ interface DroppableBoardProps {
 interface FormData {
     text: string;
 }
+
+/**
+ * @description Draging되는 업무카드가 그려지기 위한 Board
+ */
 
 const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
     const { register, handleSubmit, setValue, getValues } = useForm<FormData>({ mode: "onChange", defaultValues: { text: "" } });
@@ -59,7 +64,9 @@ const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
                 <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
                 </BoardForm>
                 <BoardContent isDraggingOver={isDraggingOver} draggingFromThisWith={!!draggingFromThisWith}>
-                
+                {todos.map((todo, index) => (
+                    <DraggableCard key={todo.id} index={index} boardId={boardId} todoId={todo.id} todoText={todo.text} />
+                ))}
                 {provided.placeholder}
                 </BoardContent>
             </Board>

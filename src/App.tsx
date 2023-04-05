@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import GlobalStyle from './styles/GlobalStyle';
 import { AddBoardButton, Container} from "./styles/mainStyle";
+import DragDropContainer from "./components/DragDropContainer";
+
 import { useSetRecoilState } from "recoil";
 import { boardModalState } from "./atom";
 
@@ -26,6 +28,7 @@ function App() {
         <BoardModal />
         <BoardTitleModal />
         <CardModal />
+        <DragDropContainer />
 
 
       </Container>
