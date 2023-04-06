@@ -60,9 +60,9 @@ const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
                 {(provided: DroppableProvided, { isDraggingOver, draggingFromThisWith }: DroppableStateSnapshot) => (
                 <Board ref={provided.innerRef} {...provided.droppableProps}>
                     <BoardId onClick={handleEditBoard}>{boardId}</BoardId>
-                    <BoardForm onSubmit={handleSubmit(onValid)}>
-                    <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
-                    </BoardForm>
+                        <BoardForm onSubmit={handleSubmit(onValid)}>
+                            <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
+                        </BoardForm>
                     <BoardContent isDraggingOver={isDraggingOver} draggingFromThisWith={!!draggingFromThisWith}>
                     {todos.map((todo, index) => (
                         <DraggableCard key={todo.id} index={index} boardId={boardId} todoId={todo.id} todoText={todo.text} />
@@ -128,6 +128,8 @@ const BoardInput = styled.input`
 
 const BoardContent = styled.div<{ isDraggingOver: boolean; draggingFromThisWith: boolean }>`
     height: calc(100% - 30px);
+    max-height: 415px;
+    overflow-y: auto;
     border-radius: 5px;
     transition: all 0.5s;
     padding: 10px;

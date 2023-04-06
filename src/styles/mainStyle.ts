@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 1024px;
+    max-width: 1600px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -33,11 +33,13 @@ export const ButtonWrap = styled.div`
 
     button{
         margin: 0 20px;
+        box-shadow: 0px 0px 2px 2px rgba(255, 255, 255, 0.7);
     }
 `
 export const NotiText = styled.p`
     color: #fff;
-    font-size: 16px
+    font-size: 18px;
+    text-shadow: 0px 0px 15px #000;
 `
 export const BoardWrap = styled.div`
     width: 100%;
@@ -47,7 +49,7 @@ export const ResetBoardButton = styled.button`
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    border: 8px solid red;
+    border: 8px solid #000;
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -68,7 +70,7 @@ export const ResetBoardButton = styled.button`
         transform: translate(-50%, -50%) rotate(45deg);
         width: 8px;
         height: 45px;
-        background-color: red;
+        background-color: #000;
     }
 `
 
@@ -78,9 +80,9 @@ export const AddBoardButton = styled.button`
     outline: none;
     width: 50px;
     height: 50px;
+    border: 1px solid #888;
     border-radius: 25px;
     background-color: #fff;
-    /* box-shadow: rgb(0 0 0 / 35%) 0px 5px 35px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,17 +113,17 @@ export const AddBoardButton = styled.button`
 
 export const Boards = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
     gap: 20px;
 `;
 
 export const DeleteContainer = styled.div`
     position: fixed;
-    bottom: 50px;
+    top: 50px;
     right: 50px;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 `;
 
 export const ModalCloseButton = styled.button`

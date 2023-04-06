@@ -36,7 +36,7 @@ function App() {
           </MainTitle>
           <ButtonWrap>
             {
-              boardLength < 6 ? 
+              boardLength < 4 ? 
                 <AddBoardButton type="button" onClick={addButtonHandler}/>
               :
                 null  
@@ -47,7 +47,7 @@ function App() {
           </ButtonWrap>
           <ButtonWrap>
             {
-              boardLength > 5 && <NotiText>* Board는 6개 까지만 등록 가능 합니다.</NotiText>
+              boardLength > 3 && <NotiText>* Board는 4개 까지만 등록 가능 합니다.</NotiText>
             }
           </ButtonWrap>
         </TitleWrap>

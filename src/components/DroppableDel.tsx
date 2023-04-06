@@ -10,9 +10,11 @@ const DroppableDel = () => {
                     {isDraggingOver ? 
                         <p>드롭 하세요.</p>
                     : 
-                        <p>일감을 드롭하면 삭제 됩니다.</p>
+                        <>
+                            <p>일감을 드롭하면</p>
+                            <p>삭제 됩니다.</p>
+                        </>
                     }
-                    {/* {provided.placeholder} */}
                 </Content>
                 )}
             </Droppable>
@@ -29,14 +31,15 @@ const Container = styled.div`
 const Content = styled.div<{ isDraggingOver: boolean; draggingFromThisWith: boolean }>`
     width: 100%;
     height: 100%;
-    background-color: ${({ isDraggingOver}) => (isDraggingOver ? "rgba(255, 255, 255, 0.344)" : "transparent")};
+    background-color: ${({ isDraggingOver}) => (isDraggingOver ? "rgba(255, 255, 255, 0.178)" : "transparent")};
     border: 3px dashed ${({ isDraggingOver}) => (isDraggingOver ? "red" : "white")};
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     p{
-        font-size: 24px;
+        font-size: 18px;
         color: ${({ isDraggingOver}) => (isDraggingOver ? "red" : "white")};
         word-break: keep-all;
         text-align: center;
