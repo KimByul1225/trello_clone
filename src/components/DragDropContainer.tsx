@@ -1,8 +1,10 @@
-import { Boards } from "../styles/mainStyle";
+import { Boards, DeleteContainer } from "../styles/mainStyle";
 import DroppableBoard from "./DroppableBoard";
 import { useRecoilState } from "recoil";
 import { todosState } from "../atom";
 import { DragDropContext, DragStart, DropResult, ResponderProvided } from "react-beautiful-dnd";
+import DroppableDel from "./DroppableDel";
+
 import { saveTodoToLocalStorage } from "../utils/todo";
 import { ITodosState } from "../types/common";
 import { useCallback } from "react";
@@ -59,13 +61,15 @@ const DragDropContainer = () => {
 
     return (
         <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-        <Boards>
-            {Object.keys(todos).map((boardId) => (
-                <DroppableBoard key={boardId} boardId={boardId} todos={todos[boardId]} />
-            ))}
-        </Boards>
+            <Boards>
+                {Object.keys(todos).map((boardId) => (
+                    <DroppableBoard key={boardId} boardId={boardId} todos={todos[boardId]} />
+                ))}
+            </Boards>
 
-        
+            <DeleteContainer>
+                <DroppableDel/>
+            </DeleteContainer>
         
         </DragDropContext>
     );

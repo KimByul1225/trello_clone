@@ -18,7 +18,7 @@ interface FormData {
 }
 
 /**
- * @description Draging되는 업무카드가 그려지기 위한 Board
+ * @description Draging되는 업무카드가 그려지기 위한 보드
  */
 
 const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
@@ -32,46 +32,46 @@ const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
         setBoardTitle(boardId);
     }, [boardId, setBoardTitleModal, setBoardTitle]);
 
-    const handleDeleteBoard = useCallback(() => {
+    const deleteBoardHandler = useCallback(() => {
         setTodos((prev) => {
-        const copiedTodos = { ...prev };
-        delete copiedTodos[boardId];
-        const result = copiedTodos;
-        saveTodoToLocalStorage(result);
-        return result;
+            const copiedTodos = { ...prev };
+            delete copiedTodos[boardId];
+            const result = copiedTodos;
+            saveTodoToLocalStorage(result);
+            return result;
         });
     }, [boardId, setTodos]);
 
     const onValid = useCallback(() => {
         setTodos((prev) => {
-        const { text } = getValues();
-        const createdTodo = { id: Date.now(), text };
-        const result = { ...prev, [boardId]: [createdTodo, ...prev[boardId]] };
-        saveTodoToLocalStorage(result);
-        return result;
+            const { text } = getValues();
+            const createdTodo = { id: Date.now(), text };
+            const result = { ...prev, [boardId]: [createdTodo, ...prev[boardId]] };
+            saveTodoToLocalStorage(result);
+            return result;
         });
         setValue("text", "");
     }, [boardId, getValues, setTodos, setValue]);
 
     return (
         <Container>
-        <DeleteBoardButton onClick={handleDeleteBoard}>✕</DeleteBoardButton>
-        <Droppable droppableId={boardId}>
-            {(provided: DroppableProvided, { isDraggingOver, draggingFromThisWith }: DroppableStateSnapshot) => (
-            <Board ref={provided.innerRef} {...provided.droppableProps}>
-                <BoardId onClick={handleEditBoard}>{boardId}</BoardId>
-                <BoardForm onSubmit={handleSubmit(onValid)}>
-                <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
-                </BoardForm>
-                <BoardContent isDraggingOver={isDraggingOver} draggingFromThisWith={!!draggingFromThisWith}>
-                {todos.map((todo, index) => (
-                    <DraggableCard key={todo.id} index={index} boardId={boardId} todoId={todo.id} todoText={todo.text} />
-                ))}
-                {provided.placeholder}
-                </BoardContent>
-            </Board>
-            )}
-        </Droppable>
+            <DeleteBoardButton onClick={deleteBoardHandler}>✕</DeleteBoardButton>
+            <Droppable droppableId={boardId}>
+                {(provided: DroppableProvided, { isDraggingOver, draggingFromThisWith }: DroppableStateSnapshot) => (
+                <Board ref={provided.innerRef} {...provided.droppableProps}>
+                    <BoardId onClick={handleEditBoard}>{boardId}</BoardId>
+                    <BoardForm onSubmit={handleSubmit(onValid)}>
+                    <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
+                    </BoardForm>
+                    <BoardContent isDraggingOver={isDraggingOver} draggingFromThisWith={!!draggingFromThisWith}>
+                    {todos.map((todo, index) => (
+                        <DraggableCard key={todo.id} index={index} boardId={boardId} todoId={todo.id} todoText={todo.text} />
+                    ))}
+                    {provided.placeholder}
+                    </BoardContent>
+                </Board>
+                )}
+            </Droppable>
         </Container>
     );
 };

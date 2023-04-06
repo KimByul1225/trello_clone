@@ -8,6 +8,9 @@ import { useCallback } from "react";
 interface FormData {
     text: string;
 }
+/**
+ * @description 내용 수정을 위한 모달창.
+ */
 
 const CardModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });

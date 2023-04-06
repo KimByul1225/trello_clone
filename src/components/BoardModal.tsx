@@ -14,6 +14,7 @@ interface FormData {
  */
 const BoardModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });
+
     const [boardModal, setBoardModal] = useRecoilState<boolean>(boardModalState);
     const setTodos = useSetRecoilState(todosState);
 
@@ -21,34 +22,39 @@ const BoardModal = () => {
         return setBoardModal(false);
     }, [setBoardModal]);
 
+
+
     const onValid = useCallback(() => {
         const { title } = getValues();
+
         setTodos((prev) => {
-        const result = { [title]: [], ...prev };
-        saveTodoToLocalStorage(result);
-        return result;
+            const result = { [title]: [], ...prev };
+            saveTodoToLocalStorage(result);
+            return result;
         });
+        
         setValue("title", "");
         closeButtonHandler();
+
     }, [getValues, closeButtonHandler, setTodos, setValue]);
 
     return (
         <StyledModal 
-        isOpen={boardModal} 
-        onRequestClose={closeButtonHandler} 
-        ariaHideApp={false} 
-        contentLabel="boardModal" 
-        style={{
-            overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.7)"
-            }
-        }}
+            isOpen={boardModal} 
+            onRequestClose={closeButtonHandler} 
+            ariaHideApp={false} 
+            contentLabel="boardModal" 
+            style={{
+                overlay: {
+                backgroundColor: "rgba(0, 0, 0, 0.7)"
+                }
+            }}
         >
         <button type="button" onClick={closeButtonHandler}/>
         <form onSubmit={handleSubmit(onValid)}>
             <div>
-            <h1>보드를 추가해 주세요.</h1>
-            <input {...register("title", { required: "보드명을 입력해 주세요." })} type="text" placeholder="보드명을 입력해 주세요." />
+                <h1>보드를 추가해 주세요.</h1>
+                <input {...register("title", { required: "보드명을 입력해 주세요." })} type="text" placeholder="보드명을 입력해 주세요." />
             </div>
         </form>
         </StyledModal>
