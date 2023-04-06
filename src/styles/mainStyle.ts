@@ -16,12 +16,14 @@ export const TitleWrap = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
+    color: #fff;
 `
 
 export const MainTitle = styled.h2`
-    font-size: 52px;
-    font-weight: 700;
+    font-size: 72px;
+    font-weight: 900;
     margin-bottom: 20px;
+    text-shadow: 7px 9px 8px black;
 
 `
 export const ButtonWrap = styled.div`
@@ -33,17 +35,13 @@ export const ButtonWrap = styled.div`
         margin: 0 20px;
     }
 `
-
-
 export const NotiText = styled.p`
-    color: red;
+    color: #fff;
     font-size: 16px
 `
-
 export const BoardWrap = styled.div`
     width: 100%;
 `
-
 export const ResetBoardButton = styled.button`
     position: relative;
     width: 50px;
@@ -109,7 +107,6 @@ export const AddBoardButton = styled.button`
         width: 35px;
         height: 8px;
     }
-
 `;
 
 export const Boards = styled.div`
@@ -127,3 +124,78 @@ export const DeleteContainer = styled.div`
     height: 150px;
 `;
 
+export const ModalCloseButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    ::before, ::after{
+        content: '';
+        display: inline-block;
+        background: #888;
+        position: absolute;
+        tranforn: translate(-50%, -50%);
+        width: 20px;
+        height: 6px;
+        border-radius: 3px;
+    }
+    ::after{
+        width: 6px;
+        height: 20px;
+    }
+`
+
+export const ResetModlaBox = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h3{
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 45px;
+    }
+`
+export const ButtonBox = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+        position: relative;
+        background: #fff;
+        border: 1px solid #333;
+        top: none;
+        right: none;
+        transform: rotate(0deg);
+        font-size: 16px;
+        font-weight: 600;
+        width: 100px;
+        height: 35px;
+        border-radius: 20px;
+        margin: 0 10px;
+        ::after, ::before{
+            display: none;
+        }
+        transition: all .3s ease;
+        :hover{
+            background: #000;
+            color: #fff;
+            border: 1px solid #000;
+        }
+    }
+`

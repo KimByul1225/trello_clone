@@ -4,6 +4,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import StyledModal from "./common/StyledModal";
 import { saveTodoToLocalStorage } from "../utils/todo";
 import { useCallback } from "react";
+import { ModalCloseButton } from "../styles/mainStyle";
 
 interface FormData {
     text: string;
@@ -51,10 +52,10 @@ const CardModal = () => {
                 }
             }}
         >
-            <button type="button" onClick={closeButtonHandler}/>
+            <ModalCloseButton type="button" onClick={closeButtonHandler}/>
             <form onSubmit={handleSubmit(onValid)}>
                 <div>
-                    <h1>내용을 수정해 주세요.</h1>
+                    <h3>내용을 수정해 주세요.</h3>
                     <input {...register("text", { required: "수정 된 내용을 입력 하세요." })} type="text" placeholder="수정 된 내용을 입력 하세요." />
                 </div>
             </form>

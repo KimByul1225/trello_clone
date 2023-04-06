@@ -4,6 +4,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { saveTodoToLocalStorage } from "../utils/todo";
 import StyledModal from "./common/StyledModal";
 import { useCallback } from "react";
+import { ModalCloseButton } from "../styles/mainStyle";
 
 interface FormData {
     title: string;
@@ -50,11 +51,11 @@ const BoardTitleModal = () => {
             }
         }}
         >
-        <button type="button" onClick={closeButtonHandler}/>
+        <ModalCloseButton type="button" onClick={closeButtonHandler}/>
         <form onSubmit={handleSubmit(onValid)}>
             <div>
-            <h1>보드명을 수정해 주세요.</h1>
-            <input {...register("title", { required: "수정된 보드명을 입력하세요." })} type="text" placeholder="수정된 보드명을 입력하세요." />
+                <h3>보드명을 수정해 주세요.</h3>
+                <input {...register("title", { required: "수정된 보드명을 입력하세요." })} type="text" placeholder="수정된 보드명을 입력하세요." />
             </div>
         </form>
         </StyledModal>

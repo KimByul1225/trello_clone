@@ -1,16 +1,24 @@
 import { useCallback } from "react";
 import StyledModal from "./common/StyledModal";
-import { useRecoilState } from "recoil";
-import { resetBoardlState } from "../atom";
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
+import { resetBoardlState, todosState } from "../atom";
 import { saveTodoToLocalStorage } from "../utils/todo";
+import { ButtonBox, ModalCloseButton, ResetModlaBox } from "../styles/mainStyle";
 
 const RestCheckModal = () => {
     const [resetModal, setResetModal] = useRecoilState<boolean>(resetBoardlState);
+    const resetToDos = useResetRecoilState(todosState);
+    const toDos = useRecoilValue(todosState);
 
     const closeButtonHandler = useCallback(() => {
         return setResetModal(false);
     }, [setResetModal]);
-
+    
+    const resetButtonHandler = () => {
+        setResetModal(false);
+        resetToDos();
+        saveTodoToLocalStorage(toDos);
+    }
 
     return (
         <StyledModal 
@@ -24,14 +32,14 @@ const RestCheckModal = () => {
                 }
             }}
         >
-            <button type="button" onClick={closeButtonHandler}/>
-            <div>
+            <ModalCloseButton type="button" onClick={closeButtonHandler}/>
+            <ResetModlaBox>
                 <h3>정말 전체 삭제 하시겠습니까?</h3>
-                <div>
-                    <button type="button">확인</button>
-                    <button type="button">취소</button>
-                </div>
-            </div>
+                <ButtonBox>
+                    <button type="button" onClick={resetButtonHandler}>확인</button>
+                    <button type="button" onClick={closeButtonHandler}>취소</button>
+                </ButtonBox>
+            </ResetModlaBox>
         </StyledModal>
     )
 }

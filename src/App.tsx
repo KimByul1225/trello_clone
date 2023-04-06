@@ -2,14 +2,11 @@ import { useCallback } from "react";
 import GlobalStyle from './styles/GlobalStyle';
 import { AddBoardButton, Container, MainTitle, BoardWrap, NotiText, TitleWrap, ButtonWrap, ResetBoardButton} from "./styles/mainStyle";
 import DragDropContainer from "./components/DragDropContainer";
-
-import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { boardModalState, resetBoardlState, todosState } from "./atom";
-
 import BoardModal from "./components/BoardModal";
 import BoardTitleModal from "./components/BoardTitleModal";
 import CardModal from "./components/CardModal";
-import { saveTodoToLocalStorage } from "./utils/todo";
 import RestCheckModal from "./components/RestCheckModal";
 
 
@@ -19,19 +16,11 @@ function App() {
   const setResetModal = useSetRecoilState(resetBoardlState);
   const toDos = useRecoilValue(todosState);
 
-  // const resetToDos = useResetRecoilState(todosState);
-
-
   const boardLength = Object.keys(toDos).length;
   const addButtonHandler = useCallback(() => {
     setBoardModal(true);
   }, [setBoardModal]);
 
-  // const resetButtonHandler = useCallback(() => {
-  //   resetToDos();
-  //   saveTodoToLocalStorage(toDos);
-
-  // }, []);
   const resetButtonHandler = () => {
     setResetModal(true);
   }
@@ -61,15 +50,10 @@ function App() {
               boardLength > 5 && <NotiText>* Board는 6개 까지만 등록 가능 합니다.</NotiText>
             }
           </ButtonWrap>
-            
         </TitleWrap>
-        
-
         <BoardWrap>
           <DragDropContainer />
         </BoardWrap>
-
-
       </Container>
       <BoardModal />
       <BoardTitleModal />
