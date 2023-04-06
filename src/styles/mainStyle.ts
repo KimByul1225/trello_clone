@@ -118,10 +118,10 @@ export const Boards = styled.div`
 
 export const DeleteContainer = styled.div`
     position: fixed;
-    bottom: 0px;
-    right: 0px;
-    width: 150px;
-    height: 150px;
+    bottom: 50px;
+    right: 50px;
+    width: 200px;
+    height: 200px;
 `;
 
 export const ModalCloseButton = styled.button`
