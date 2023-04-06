@@ -31,8 +31,8 @@ const CardModal = () => {
         const editedTodo = { id: cardValue, text };
         const updatedTodos = [editedTodo, ...todosToEdit.filter((todo) => todo.id !== editedTodo.id)];
         const result = { ...restTodos, [cardKey]: updatedTodos };
-        saveTodoToLocalStorage(result);
-        return result;
+            saveTodoToLocalStorage(result);
+            return result;
         });
         setCard({});
         setValue("text", "");
@@ -51,13 +51,13 @@ const CardModal = () => {
                 }
             }}
         >
-        <button type="button" onClick={closeButtonHandler}/>
-        <form onSubmit={handleSubmit(onValid)}>
-            <div>
-            <h1>내용을 수정해 주세요.</h1>
-            <input {...register("text", { required: "수정 된 내용을 입력 하세요." })} type="text" placeholder="수정 된 내용을 입력 하세요." />
-            </div>
-        </form>
+            <button type="button" onClick={closeButtonHandler}/>
+            <form onSubmit={handleSubmit(onValid)}>
+                <div>
+                    <h1>내용을 수정해 주세요.</h1>
+                    <input {...register("text", { required: "수정 된 내용을 입력 하세요." })} type="text" placeholder="수정 된 내용을 입력 하세요." />
+                </div>
+            </form>
         </StyledModal>
     );
 };

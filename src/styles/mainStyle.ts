@@ -41,7 +41,7 @@ export const NotiText = styled.p`
 `
 
 export const BoardWrap = styled.div`
-
+    width: 100%;
 `
 
 export const ResetBoardButton = styled.button`

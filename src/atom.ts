@@ -45,3 +45,8 @@ export const cardModalState = atom<boolean>({
     key: "cardModalState",
     default: false,
 });
+
+export const resetBoardlState = atom<boolean>({
+    key: "resetModalState",
+    default: false,
+});

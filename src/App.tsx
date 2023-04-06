@@ -4,19 +4,22 @@ import { AddBoardButton, Container, MainTitle, BoardWrap, NotiText, TitleWrap, B
 import DragDropContainer from "./components/DragDropContainer";
 
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
-import { boardModalState, todosState } from "./atom";
+import { boardModalState, resetBoardlState, todosState } from "./atom";
 
 import BoardModal from "./components/BoardModal";
 import BoardTitleModal from "./components/BoardTitleModal";
 import CardModal from "./components/CardModal";
 import { saveTodoToLocalStorage } from "./utils/todo";
+import RestCheckModal from "./components/RestCheckModal";
 
 
 
 function App() {
   const setBoardModal = useSetRecoilState(boardModalState);
+  const setResetModal = useSetRecoilState(resetBoardlState);
   const toDos = useRecoilValue(todosState);
-  const resetToDos = useResetRecoilState(todosState);
+
+  // const resetToDos = useResetRecoilState(todosState);
 
 
   const boardLength = Object.keys(toDos).length;
@@ -24,21 +27,14 @@ function App() {
     setBoardModal(true);
   }, [setBoardModal]);
 
-  const resetButtonHandler = useCallback(() => {
-    resetToDos();
-    // console.log("toDos", toDos);
+  // const resetButtonHandler = useCallback(() => {
+  //   resetToDos();
+  //   saveTodoToLocalStorage(toDos);
 
-
-    saveTodoToLocalStorage(toDos);
-    
-    // setTodos((prev) => {
-    //         const copiedTodos = { ...prev };
-    //         delete copiedTodos[boardId];
-    //         const result = copiedTodos;
-    //         saveTodoToLocalStorage(result);
-    //         return result;
-    // });
-  }, []);
+  // }, []);
+  const resetButtonHandler = () => {
+    setResetModal(true);
+  }
 
   return (
     <>
@@ -56,7 +52,9 @@ function App() {
               :
                 null  
             }
-            <ResetBoardButton type="button" onClick={resetButtonHandler}/>
+            {
+              boardLength > 0 && <ResetBoardButton type="button" onClick={resetButtonHandler}/>
+            }
           </ButtonWrap>
           <ButtonWrap>
             {
@@ -76,6 +74,7 @@ function App() {
       <BoardModal />
       <BoardTitleModal />
       <CardModal />
+      <RestCheckModal/>
       
     </>
   );
