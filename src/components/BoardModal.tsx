@@ -51,13 +51,16 @@ const BoardModal = () => {
                 }
             }}
         >
-        <ModalCloseButton type="button" onClick={closeButtonHandler}/>
-        <form onSubmit={handleSubmit(onValid)}>
-            <div>
-                <h3>보드를 추가해 주세요.</h3>
-                <input {...register("title", { required: "보드명을 입력해 주세요." })} type="text" placeholder="보드명을 입력해 주세요." />
-            </div>
-        </form>
+            <ModalCloseButton type="button" onClick={closeButtonHandler}/>
+            <form onSubmit={handleSubmit(onValid)}>
+                <div>
+                    <h3>보드를 추가해 주세요.</h3>
+                    <div>
+                        <input {...register("title", { required: "보드명을 입력해 주세요." })} type="text" placeholder="보드명을 입력해 주세요." />
+                        <button>확인</button>
+                    </div>
+                </div>
+            </form>
         </StyledModal>
     );
 };

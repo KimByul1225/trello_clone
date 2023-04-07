@@ -19,23 +19,30 @@ const StyledModal = styled(Modal)`
         justify-content: center;
         align-items: center;
         div {
-        width: 100%;
-        text-align: center;
-        h3 {
+            width: 100%;
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 24px;
-            font-weight: 700;
-        }
-        input {
-            border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 17px 20px;
-            padding-left: 13px;
-            border-radius: 5px;
-            width: calc(100% - 100px);
-        }
+            position: relative;
+            h3 {
+                text-align: center;
+                margin-bottom: 50px;
+                font-size: 24px;
+                font-weight: 700;
+            }
+            input {
+                border: none;
+                outline: none;
+                font-size: 16px;
+                padding: 17px 20px;
+                padding-left: 13px;
+                border-radius: 5px;
+                width: calc(100% - 100px);
+            }
+            button{
+                position: absolute;
+                right: 50px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
     }
 `;

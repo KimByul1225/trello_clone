@@ -56,7 +56,10 @@ const CardModal = () => {
             <form onSubmit={handleSubmit(onValid)}>
                 <div>
                     <h3>내용을 수정해 주세요.</h3>
-                    <input {...register("text", { required: "수정 된 내용을 입력 하세요." })} type="text" placeholder="수정 된 내용을 입력 하세요." />
+                    <div>
+                        <input {...register("text", { required: "수정 된 내용을 입력 하세요." })} type="text" placeholder="수정 된 내용을 입력 하세요." />
+                        <button>확인</button>
+                    </div>
                 </div>
             </form>
         </StyledModal>

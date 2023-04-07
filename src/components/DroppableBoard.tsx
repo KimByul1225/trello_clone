@@ -55,13 +55,15 @@ const DroppableBoard = ({ boardId, todos }: DroppableBoardProps) => {
 
     return (
         <Container>
-            <DeleteBoardButton onClick={deleteBoardHandler}>✕</DeleteBoardButton>
+            <DeleteBoardButton onClick={deleteBoardHandler}/>
             <Droppable droppableId={boardId}>
                 {(provided: DroppableProvided, { isDraggingOver, draggingFromThisWith }: DroppableStateSnapshot) => (
                 <Board ref={provided.innerRef} {...provided.droppableProps}>
                     <BoardId onClick={handleEditBoard}>{boardId}</BoardId>
                         <BoardForm onSubmit={handleSubmit(onValid)}>
+                            
                             <BoardInput {...register("text", { required: "해야 할 일을 입력하세요." })} type="text" placeholder={`해야 할 일을 추가하세요.`} />
+                            <InputButton>확인</InputButton>
                         </BoardForm>
                     <BoardContent isDraggingOver={isDraggingOver} draggingFromThisWith={!!draggingFromThisWith}>
                     {todos.map((todo, index) => (
@@ -84,16 +86,34 @@ const Container = styled.div`
 
 const DeleteBoardButton = styled.button`
     position: absolute;
-    top: 12px;
+    top: 10px;
     right: 10px;
     border: none;
     outline: none;
+    background-color: #fff;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
     cursor: pointer;
-    background-color: lightgray;
-    color: white;
-    padding: 3px 5px;
-    border-radius: 50px;
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    ::before, ::after{
+        content: '';
+        display: inline-block;
+        background: #888;
+        position: absolute;
+        tranforn: translate(-50%, -50%);
+        width: 20px;
+        height: 6px;
+        border-radius: 3px;
+    }
+    ::after{
+        width: 6px;
+        height: 20px;
+    }
 `;
 
 const Board = styled.div`
@@ -114,7 +134,9 @@ const BoardId = styled.h1`
     cursor: pointer;
 `;
 
-const BoardForm = styled.form``;
+const BoardForm = styled.form`
+    position: relative;
+`;
 
 const BoardInput = styled.input`
     border: none;
@@ -125,6 +147,13 @@ const BoardInput = styled.input`
     width: calc(100% - 60px);
     font-size: 15px;
 `;
+
+const InputButton = styled.button`
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+`
 
 const BoardContent = styled.div<{ isDraggingOver: boolean; draggingFromThisWith: boolean }>`
     height: calc(100% - 30px);
