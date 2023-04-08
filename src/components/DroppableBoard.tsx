@@ -105,7 +105,6 @@ const DeleteBoardButton = styled.button`
         display: inline-block;
         background: #888;
         position: absolute;
-        tranforn: translate(-50%, -50%);
         width: 20px;
         height: 6px;
         border-radius: 3px;

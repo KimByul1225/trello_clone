@@ -42,10 +42,10 @@ const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps)
             <CardContainer ref={provided.innerRef} isDragging={isDragging} {...provided.draggableProps} {...provided.dragHandleProps}>
             <CardText isDragging={isDragging}>{todoText}</CardText>
             <CardEditButton type="button" isDragging={isDragging} onClick={handleEditTodo}>
-                ✎
+                수정
             </CardEditButton>
             <CardDeleteButton type="button" isDragging={isDragging} onClick={handleDeleteTodo}>
-                ✕
+                삭제
             </CardDeleteButton>
             </CardContainer>
         )}
@@ -56,11 +56,12 @@ const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps)
 export default memo(DraggableCard);
 
 const CardContainer = styled.div<{ isDragging: boolean }>`
-    background-color: ${({ theme, isDragging }) => (isDragging ? "rgba(85, 239, 196, 0.6)" : theme.cardColor)};
+    background-color: ${({ theme, isDragging }) => (isDragging ? "rgba(29, 121, 250, 0.6)" : theme.cardColor)};
     color: ${({ isDragging }) => (isDragging ? "white" : "black")};
-    border: 3px solid ${({ theme, isDragging }) => (isDragging ? "rgba(85, 239, 196, 1)" : theme.cardColor)};
+
+    border: 3px solid ${({ theme, isDragging }) => (isDragging ? "rgba(29, 121, 250, 1)" : theme.cardColor)};
     border-radius: 5px;
-    padding: 13px 12px;
+    padding: 13px 10px;
     margin-bottom: 10px;
     font-size: 20px;
     display: flex;
@@ -70,29 +71,13 @@ const CardContainer = styled.div<{ isDragging: boolean }>`
 
 const CardText = styled.span<{ isDragging: boolean }>`
     font-size: 18px;
-    color: ${({ isDragging }) => (isDragging ? "white" : "darkgray")};
-  margin-right: auto;
+    font-weight: 600;
+    color: ${({ isDragging }) => (isDragging ? "white" : "black")};
+    margin-right: auto;
 `;
 
 const CardEditButton = styled.button<{ isDragging: boolean }>`
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: ${({ isDragging }) => (isDragging ? "white" : "rgba(178, 190, 195,1.0)")};
-    color: ${({ isDragging }) => (isDragging ? "rgba(178, 190, 195,1.0)" : "white")};
-    padding: 4.5px 7px;
-    border-radius: 3px;
-    font-size: 12px;
     margin-right: 5px;
 `;
 
-const CardDeleteButton = styled.button<{ isDragging: boolean }>`
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: ${({ isDragging }) => (isDragging ? "white" : "rgba(178, 190, 195,1.0)")};
-    color: ${({ isDragging }) => (isDragging ? "rgba(178, 190, 195,1.0)" : "white")};
-    padding: 5px 7px;
-    border-radius: 3px;
-    font-size: 12px;
-`;
+const CardDeleteButton = styled.button<{ isDragging: boolean }>``;
