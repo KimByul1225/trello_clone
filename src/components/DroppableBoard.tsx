@@ -163,5 +163,5 @@ const BoardContent = styled.div<{ isDraggingOver: boolean; draggingFromThisWith:
     padding: 10px;
     margin-top: 8px;
     box-sizing: border-box;
-    background-color: ${({ theme, isDraggingOver, draggingFromThisWith }) => (isDraggingOver ? theme.boardBgColor : draggingFromThisWith ? "rgba(225, 112, 85,0.5)" : "transparent")};
+    background-color: ${({ theme, isDraggingOver, draggingFromThisWith }) => (isDraggingOver ? theme.boardBgColor : draggingFromThisWith ? "rgba(233, 57, 57, 0.35)" : "transparent")};
 `;

@@ -56,10 +56,10 @@ const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps)
 export default memo(DraggableCard);
 
 const CardContainer = styled.div<{ isDragging: boolean }>`
-    background-color: ${({ theme, isDragging }) => (isDragging ? "rgba(29, 121, 250, 0.6)" : theme.cardColor)};
+    background-color: ${({ theme, isDragging }) => (isDragging ? "rgba(89, 194, 255, 0.6)" : theme.cardColor)};
     color: ${({ isDragging }) => (isDragging ? "white" : "black")};
 
-    border: 3px solid ${({ theme, isDragging }) => (isDragging ? "rgba(29, 121, 250, 1)" : theme.cardColor)};
+    border: 3px solid ${({ theme, isDragging }) => (isDragging ? "rgba(89, 194, 255, 1)" : theme.cardColor)};
     border-radius: 5px;
     padding: 13px 10px;
     margin-bottom: 10px;
