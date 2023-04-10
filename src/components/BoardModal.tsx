@@ -11,32 +11,25 @@ interface FormData {
 }
 
 /**
- * @description 보드를 추가하기 위한 Modal창.
+ * @description 보드를 추가하기 위한 Modal창
  */
 const BoardModal = () => {
     const { register, handleSubmit, getValues, setValue } = useForm<FormData>({ mode: "onChange" });
-
     const [boardModal, setBoardModal] = useRecoilState<boolean>(boardModalState);
     const setTodos = useSetRecoilState(todosState);
-
     const closeButtonHandler = useCallback(() => {
         return setBoardModal(false);
     }, [setBoardModal]);
 
-
-
     const onValid = useCallback(() => {
         const { title } = getValues();
-
         setTodos((prev) => {
             const result = { [title]: [], ...prev };
             saveTodoToLocalStorage(result);
             return result;
         });
-        
         setValue("title", "");
         closeButtonHandler();
-
     }, [getValues, closeButtonHandler, setTodos, setValue]);
 
     return (

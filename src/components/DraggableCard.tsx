@@ -11,21 +11,17 @@ interface DraggableCardProps {
     todoId: number;
     todoText: string;
 }
-
 /**
  * @description Draging되는 업무카드 하나하나
  */
-
 const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps) => {
     const setTodos = useSetRecoilState(todosState);
     const setCardModal = useSetRecoilState(cardModalState);
     const setCard = useSetRecoilState(cardState);
-
     const handleEditTodo = useCallback(() => {
         setCard({ [boardId]: todoId });
         setCardModal(true);
     }, [boardId, todoId, setCard, setCardModal]);
-
     const handleDeleteTodo = useCallback(() => {
         setTodos((prev) => {
         const copiedTodos = [...prev[boardId]];
@@ -35,7 +31,6 @@ const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps)
         return result;
         });
     }, [boardId, todoId, setTodos]);
-
     return (
         <Draggable index={index} draggableId={String(todoId)} key={todoId}>
         {(provided: DraggableProvided, { isDragging }: DraggableStateSnapshot) => (
@@ -52,13 +47,11 @@ const DraggableCard = ({ index, boardId, todoId, todoText }: DraggableCardProps)
         </Draggable>
     );
 };
-
 export default memo(DraggableCard);
 
 const CardContainer = styled.div<{ isDragging: boolean }>`
     background-color: ${({ theme, isDragging }) => (isDragging ? "rgba(89, 194, 255, 0.6)" : theme.cardColor)};
     color: ${({ isDragging }) => (isDragging ? "white" : "black")};
-
     border: 3px solid ${({ theme, isDragging }) => (isDragging ? "rgba(89, 194, 255, 1)" : theme.cardColor)};
     border-radius: 5px;
     padding: 13px 10px;

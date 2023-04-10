@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Modal from "react-modal";
 
+/**
+ * @description Modal창 기본 style
+ */
+
 const StyledModal = styled(Modal)`
     outline: none;
     position: absolute;
