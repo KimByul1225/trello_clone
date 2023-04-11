@@ -1,6 +1,10 @@
 import { Droppable, DroppableProvided, DroppableStateSnapshot } from "react-beautiful-dnd";
 import styled from "styled-components";
 
+/**
+ * @description 일감을 드롭해서 삭제하는 부분
+ */
+
 const DroppableDel = () => {
     return (
         <Container>

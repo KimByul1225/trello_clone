@@ -5,6 +5,10 @@ import { resetBoardlState, todosState } from "../atom";
 import { saveTodoToLocalStorage } from "../utils/todo";
 import { ButtonBox, ModalCloseButton, ResetModlaBox } from "../styles/mainStyle";
 
+/**
+ * @description 보드 전체삭제를 확인하기 위한 Modal
+ */
+
 const RestCheckModal = () => {
     const [resetModal, setResetModal] = useRecoilState<boolean>(resetBoardlState);
     const resetToDos = useResetRecoilState(todosState);
