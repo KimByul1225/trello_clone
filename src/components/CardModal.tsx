@@ -10,7 +10,7 @@ interface FormData {
     text: string;
 }
 /**
- * @description 내용 수정을 위한 모달창.
+ * @description 내용 수정을 위한 모달창
  */
 
 const CardModal = () => {

@@ -11,7 +11,7 @@ interface FormData {
 }
 
 /**
- * @description 보드 타이틀 수정 하는 모달창.
+ * @description 보드 타이틀 수정 하는 모달창
  */
 
 const BoardTitleModal = () => {
