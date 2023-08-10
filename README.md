@@ -6,7 +6,8 @@
 <br />
 <img height="200" src="./readme/logo.png" />
 <br />
-<a display="block" href="#">https://github.com/KimByul1225/trello_clone</a>
+<br />
+<a display="block" href="https://byul-trello-clone.netlify.app">https://byul-trello-clone.netlify.app</a>
 <br /><br />
 </div>
 <br />
